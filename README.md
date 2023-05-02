@@ -93,3 +93,43 @@ emp_id | emp_name | job_name | manager_id | hire_date | salary | commission | de
 #### From the following table, write a SQL query to find those employees whose designation is ‘CLERK’. Return complete information about the employees.
 
 - select \* from employees where employees.job_name ='CLERK'
+
+#### From the following table, write a SQL query to find those employees who joined in any month, but the name of the month contain the character ‘A’ in second position. Return complete information about the employees
+
+- select \* from employees where to_char(hire_date,'MON') like '\_A%'
+
+#### From the following table, write a SQL query to find those employees who joined in any month, but the month name contain the character ‘A’. Return complete information about the employees.
+
+- select \* from employees where to_char(hire_date,'MON') like '%A%
+
+#### From the following table, write a SQL query to find those employees whose name ends with 'S' and six characters long. Return complete information about the employees.
+
+- select \* from employees where emp_name like '%S' and length(emp_name)=6
+
+#### From the following table, write a SQL query to find those employees whose names contain the letter 'A’. Return complete information about the employees
+
+- select \* from employees where emp_name like '%A%'
+
+#### From the following table, write a SQL query to find those employees whose ID not start with the digit 68. Return employee ID, employee ID using trim function.
+
+- select emp_id,trim(to_char(emp_id,'9999'))
+  from employees where trim(to_char(emp_id,'9999')) NOT LIKE '68%'
+
+#### From the following table, write a SQL query to find those employees who joined in 90's. Return complete information about the employees
+
+- select \* from employees where to_char(hire_date,'YY') LIKE '9%'
+
+#### From the following table, write a SQL query to identify those employees whose names begin with 'A' and are six characters long. Return employee name
+
+- select emp_name from employees where emp_name LIKE 'A%' AND length(emp_name)=6
+
+#### From the following table, write a SQL query to find number of employees and average salary. Group the result set on department id and job name. Return number of employees, average salary, department ID, and job name.
+
+select count(\*), avg(salary),dep_id,job_name from employees group by dep_id,job_name
+
+#### From the following table, write a SQL query to check whether the employees ID are unique or not. Return employee id, number of employees.
+
+- SELECT emp_id,
+  count(\*)
+  FROM employees
+  GROUP BY emp_id;
